@@ -1,0 +1,60 @@
+================================================================================
+                    亚马逊选品智析 — 环境变量配置说明
+================================================================================
+
+【使用步骤】
+
+1. 在项目根目录创建 .env 文件
+2. 将下方模板中的占位符替换为你的真实配置
+3. 安装依赖：pip install -r requirements.txt
+4. 启动各服务前确保 .env 已配置完成
+
+【重要 — 敏感信息勿公开】
+- .env 含 API Key 及私人代理地址，请勿提交到 Git / GitHub
+- OPENAI_BASE_URL 为私人 OpenAI 兼容代理，仅团队内部使用，禁止写入公开文档或代码仓库
+- 上传代码前请确认 .gitignore 已包含 .env
+- 公开仓库中 env配置说明.txt 仅保留占位符，不含真实地址
+
+================================================================================
+                              变量清单
+================================================================================
+
+# ---------- OpenAI 兼容 API ----------
+# 适用服务：8005 / 8007 / 8008 / 8009 / 8010 / 8011 / 8013
+OPENAI_API_KEY=你的OpenAI或代理API密钥
+OPENAI_BASE_URL=你的私人OpenAI兼容代理地址（勿公开，仅填在本地 .env）
+
+# ---------- DeepSeek API（8006 社媒） ----------
+DEEPSEEK_SOCIAL_API_KEY=你的DeepSeek密钥_社媒服务
+
+# ---------- DeepSeek API（8012 趋势） ----------
+DEEPSEEK_TRENDS_API_KEY=你的DeepSeek密钥_趋势服务
+DEEPSEEK_API_BASE_URL=https://api.deepseek.com
+
+================================================================================
+                           各端口对应关系
+================================================================================
+
+端口    服务名称              使用的环境变量
+----    --------              --------------
+8005    品牌官网查询          OPENAI_API_KEY, OPENAI_BASE_URL
+8006    社媒链接提取          DEEPSEEK_SOCIAL_API_KEY
+8007    产品评论分析          OPENAI_API_KEY, OPENAI_BASE_URL
+8008    准入认证（增强）      OPENAI_API_KEY, OPENAI_BASE_URL
+8009    准入认证（标准）      OPENAI_API_KEY, OPENAI_BASE_URL
+8010    类目属性聚合          OPENAI_API_KEY, OPENAI_BASE_URL
+8011    PPC/SPR/CPA 分析      OPENAI_API_KEY, OPENAI_BASE_URL
+8012    Google Trends 分析    DEEPSEEK_TRENDS_API_KEY, DEEPSEEK_API_BASE_URL
+8013    类目深度分析          OPENAI_API_KEY, OPENAI_BASE_URL
+
+================================================================================
+                           .env 模板（可复制）
+================================================================================
+
+OPENAI_API_KEY=
+OPENAI_BASE_URL=
+DEEPSEEK_SOCIAL_API_KEY=
+DEEPSEEK_TRENDS_API_KEY=
+DEEPSEEK_API_BASE_URL=https://api.deepseek.com
+
+================================================================================
